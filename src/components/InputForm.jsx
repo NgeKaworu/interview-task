@@ -15,11 +15,12 @@ const Form = styled.form`
   .btn {
     width: 128px;
     margin-left: 8px;
+    border: none;
   }
 `;
 
 export default function InputForm({ onSubmit = () => {} }) {
-  const [date, setDate] = useState({
+  const [data, setData] = useState({
     task: "",
     price: "",
     type: "",
@@ -27,8 +28,8 @@ export default function InputForm({ onSubmit = () => {} }) {
 
   function formChangeHandler(field) {
     return (e) => {
-      setDate({
-        ...date,
+      setData({
+        ...data,
         [field]: e.currentTarget.value,
       });
     };
@@ -38,14 +39,14 @@ export default function InputForm({ onSubmit = () => {} }) {
     <Form
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit(date);
+        onSubmit(data);
       }}
     >
       <input
         
         required
         placeholder="任务"
-        value={date["task"]}
+        value={data["task"]}
         onChange={formChangeHandler("task")}
       ></input>
       <input
@@ -53,7 +54,7 @@ export default function InputForm({ onSubmit = () => {} }) {
         className="price"
         required
         placeholder="价格"
-        value={date["price"]}
+        value={data["price"]}
         onChange={formChangeHandler("price")}
         type="number"
         min={0}
@@ -62,7 +63,7 @@ export default function InputForm({ onSubmit = () => {} }) {
       <select
         
         required
-        value={date["type"]}
+        value={data["type"]}
         onChange={formChangeHandler("type")}
       >
         <option value="" disabled hidden>
@@ -72,7 +73,7 @@ export default function InputForm({ onSubmit = () => {} }) {
         <option value="CNY">¥</option>
         <option value="USD">$</option>
       </select>
-      <input className="btn" type="submit" value="提交"></input>
+      <input className="btn" type="submit" value="添加"></input>
     </Form>
   );
 }

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { QueryCache, ReactQueryCacheProvider } from "react-query";
 
-const queryCache = new QueryCache()
+const queryCache = new QueryCache();
 
 ReactDOM.render(
   <React.StrictMode>
