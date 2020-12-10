@@ -62,6 +62,8 @@ export default function TodoList({
               <div
                 style={{
                   textDecoration: done && "line-through",
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
                 <input type="checkbox" checked={done} readOnly />

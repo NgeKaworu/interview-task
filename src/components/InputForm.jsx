@@ -5,17 +5,18 @@ const Form = styled.form`
   select:invalid {
     color: gray;
   }
+  height: 28px;
+
   display: grid;
   grid-auto-flow: column;
   grid-gap: 8px;
+  grid-template-columns: 3fr 1fr 2fr 2fr;
   justify-content: left;
-  .price {
-    width: 48px;
-  }
+  
   .btn {
-    width: 128px;
     margin-left: 8px;
     border: none;
+    border-radius: 4px;
   }
 `;
 

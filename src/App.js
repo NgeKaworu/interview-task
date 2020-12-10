@@ -7,11 +7,19 @@ import TodoList from "./components/TodoList";
 
 import toFixed from "./utils/toFixed";
 
+const Wrap = styled.div`
+  padding: 8px 16px;
+`;
+
+const Space = styled.div`
+  margin-top: ${(props) => props.size}px;
+`;
+
 const RatePanel = styled.div`
   display: flex;
   justify-content: flex-end;
   > span {
-    margin-right: 8px;
+    margin-right: 16px;
   }
 `;
 
@@ -53,7 +61,6 @@ function App() {
 
   if (error) return "An error has occurred: " + error.message;
 
-  console.log(data);
   // 人民币换美元
   const CNY2USD = data?.USD?.value,
     // 人命币换卢布
@@ -87,9 +94,8 @@ function App() {
     };
   }
 
-  console.log(sourceData);
   return (
-    <div>
+    <Wrap>
       <InputForm
         onSubmit={({ price, task, type }) => {
           const priceNumber = +price;
@@ -125,12 +131,14 @@ function App() {
         }}
       ></InputForm>
 
+      <Space size={12} />
       <RatePanel>
         <span>{toFixed(CNY2RUB, 3)} ₽/¥</span>
         <span>{toFixed(USD2RUB, 3)} ₽/$</span>
         <span>{toFixed(USD2CNY, 3)} ¥/$</span>
       </RatePanel>
 
+      <Space size={12} />
       <TodoList
         title="计划"
         totalText="将要花费"
@@ -138,13 +146,14 @@ function App() {
         onChange={checkedHandler}
       ></TodoList>
 
+      <Space size={12} />
       <TodoList
         title="已完成"
         totalText="一共花了"
         sourceData={doneList}
         onChange={checkedHandler}
       ></TodoList>
-    </div>
+    </Wrap>
   );
 }
 
